@@ -15,11 +15,6 @@ app = FastAPI()
 database = []
 
 
-@app.get('/', status_code=HTTPStatus.OK, response_model=Message)
-def read_root():
-    return {'message': 'Hello World'}
-
-
 @app.post('/users/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 def create_user(user: Userschema):
     user_with_id = UserDB(id=len(database) + 1, **user.model_dump())
@@ -54,7 +49,7 @@ def delete_user(user_id: int):
             status_code=HTTPStatus.NOT_FOUND, detail='User not found'
         )
     del database[user_id - 1]
-    return {'Message': 'User Deleted'}
+    return {'message': 'User Deleted'}
 
 
 @app.get(
