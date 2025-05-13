@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "fast_zero", from = "src"}]
+packages = [{include = "fast_zero"}]
 
 
 [tool.poetry.group.dev.dependencies]
